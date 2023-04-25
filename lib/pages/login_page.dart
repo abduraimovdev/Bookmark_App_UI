@@ -1,8 +1,12 @@
+import 'package:bookmark/pages/reading_page.dart';
+import 'package:bookmark/pages/registration_page.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../service/input.dart';
 
 class LoginPage extends StatefulWidget {
+  static final String id = "login_page";
   const LoginPage({super.key});
 
   @override
@@ -62,7 +66,9 @@ class _LoginPageState extends State<LoginPage> {
                 height: 30,
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, ReadingPage.id);
+                },
                 child: Container(
                   width: double.infinity,
                   height: 64,
@@ -83,8 +89,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
+                children: [
+                  const Text(
                     "Already have an account?",
                     style: TextStyle(
                       fontSize: 14,
@@ -94,13 +100,18 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   Text.rich(
                     TextSpan(
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Color(0xFF3D4EED),
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                           fontFamily: "raleway",
                           decoration: TextDecoration.underline),
                       text: "Log in",
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.of(context)
+                              .pushReplacementNamed(RegPage.id);
+                        },
                     ),
                   ),
                 ],

@@ -1,8 +1,11 @@
+import 'package:bookmark/pages/login_page.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../service/input.dart';
 
 class RegPage extends StatefulWidget {
+  static final String id = "registration_page";
   const RegPage({super.key});
 
   @override
@@ -96,8 +99,8 @@ class _RegPageState extends State<RegPage> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
+                children: [
+                  const Text(
                     "Already have an account?",
                     style: TextStyle(
                       fontSize: 14,
@@ -107,13 +110,19 @@ class _RegPageState extends State<RegPage> {
                   ),
                   Text.rich(
                     TextSpan(
-                      style: TextStyle(
-                          color: Color(0xFF3D4EED),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: "raleway",
-                          decoration: TextDecoration.underline),
+                      style: const TextStyle(
+                        color: Color(0xFF3D4EED),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: "raleway",
+                        decoration: TextDecoration.underline,
+                      ),
                       text: "Log in",
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.of(context)
+                              .pushReplacementNamed(LoginPage.id);
+                        },
                     ),
                   ),
                 ],
@@ -125,4 +134,3 @@ class _RegPageState extends State<RegPage> {
     );
   }
 }
-

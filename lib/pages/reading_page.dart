@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-
 class ReadingPage extends StatefulWidget {
+  static final String id = "reading_page";
+
   const ReadingPage({super.key});
 
   @override
